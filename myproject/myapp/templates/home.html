@@ -1,0 +1,14 @@
+{% load static %}  <!-- 添加此行 -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>我的 Django 项目</title>
+</head>
+<body>
+    <h1>欢迎来到我的 Django 项目!</h1>
+    <h2>静态 PNG 图片:</h2>
+    <img src="{% static 'images/test.png' %}" alt="示例 PNG 图片"> <!-- 确保路径正确 -->
+</body>
+</html>
