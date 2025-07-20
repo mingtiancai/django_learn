@@ -1,18 +1,19 @@
 # myapp/views.py
 from django.shortcuts import render
 from .forms import RegistrationForm
+from . import models
+
 
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            # 这里可以处理表单数据（例如，保存到数据库）
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            # TODO: 保存用户信息逻辑
-            return render(request, 'myapp/success.html', {'name': name})
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            password = form.cleaned_data["password"]
+            models.Person.objects.create(id=10, name=name, email=email, password=password)
+            return render(request, "myapp/success.html", {"name": name})
     else:
         form = RegistrationForm()
-    
-    return render(request, 'myapp/register.html', {'form': form})
+
+    return render(request, "myapp/register.html", {"form": form})
